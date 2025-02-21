@@ -6,14 +6,19 @@ var MaxFrames = 3
 var NumPages = 8
 let pageFault = 0
 let caricato = new Array(MaxFrames)
-let algoritmo = 0//0: Ottimo    1: LRU   2: FIFO  3: casuale
-
+let algoritmo = 2 //0: Ott
+// ottimo    1: LRU   2: FIFO  3: casuale
+let statoRAM=[]
 
 
 for (let i = 0; i < NumPages; i++)
   Pages.push(i)
 
+document.getElementById("cmdscegli").addEventListener("click", myFunction);
 
+function myFunction() {
+ algoritmo=(document.getElementById("tipoalg").innerHTML)*1
+}
 
 
 Strrif.forEach(function (s, nx) {
@@ -27,7 +32,8 @@ Strrif.forEach(function (s, nx) {
     if (Frames.length < MaxFrames) {
       Frames.push(s)
       caricato[Frames.length - 1] = nx
-
+     // statoRAM.push(JSON.stringify(Frames))
+     statoRAM.push(Frames.slice(0))
     }
     else {
 
@@ -65,7 +71,7 @@ Strrif.forEach(function (s, nx) {
 
           vittima = Math.floor((Math.random() * MaxFrames))
 
-          caricato[vittima] = nx
+       //   caricato[vittima] = nx
 
 
           Frames[vittima] = s
@@ -73,8 +79,14 @@ Strrif.forEach(function (s, nx) {
 
       }
 
-
+    //  statoRAM.push(JSON.stringify(Frames))
+      statoRAM.push(Frames.slice(0))
       console.log(JSON.stringify(Frames))
+      console.log("__RAM__")
+
+      console.log(JSON.stringify(statoRAM))
+      console.log("___")
+
 
     }
   }
@@ -83,6 +95,7 @@ Strrif.forEach(function (s, nx) {
 
 console.log(pageFault, "PageFaults totali")
 console.log(JSON.stringify(Frames), "stato finale")
+mostraRAM()
 
 function ottimo(posto) {
 
@@ -124,3 +137,36 @@ function FIFO(posto) {
   return (Firstload)
 
 }
+
+function mostraRAM(){
+
+
+  let nodo=document.getElementById("statoRAM")
+
+//statoRAM.forEach(s){
+  statoRAM.forEach((s) => {
+    const newDiv = document.createElement("div");
+    
+    ; //newDiv.innerHTML=JSON.stringify(s)
+    s.forEach((t)=>{ const rett = document.createElement("div");
+      rett.classList.add("rett")
+      rett.innerHTML=t
+      newDiv.appendChild(rett)
+    } )
+  newDiv.classList.add("rettangolo")
+  nodo.appendChild(newDiv)
+})
+
+ nodo.classList.add("rettangolo")
+
+ const pagef = document.createElement("div");
+ pagef.innerHTML="     Pagefault: "+pageFault
+ nodo.appendChild(pagef)
+ const statof = document.createElement("div");
+ statof.innerHTML="    stato finale: "+JSON.stringify(Frames)
+ nodo.appendChild(statof)
+}
+
+
+
+
