@@ -3,78 +3,79 @@ var Pages = []
 var Strrif = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1]
 //var Strrif = [1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5]
 var MaxFrames = 3
+var NumPages = 8
 let pageFault = 0
-let caricato = [0,0,0,0]
-let algoritmo = 1  //0: Ottimo    1: LRU   2: FIFO  3: casuale
+let caricato = new Array(MaxFrames)
+let algoritmo = 0//0: Ottimo    1: LRU   2: FIFO  3: casuale
 
 
 
-for (let i = 0; i < 8; i++)
+for (let i = 0; i < NumPages; i++)
   Pages.push(i)
-let numpages = Pages.length
+
 
 
 
 Strrif.forEach(function (s, nx) {
-  
- 
+
+
   if (!Frames.includes(s)) {
-  
+
     pageFault++
 
 
     if (Frames.length < MaxFrames) {
       Frames.push(s)
-      caricato[Frames.length-1]=nx
+      caricato[Frames.length - 1] = nx
 
     }
     else {
 
-    
+
       let vittima = 0
-   
+
       switch (algoritmo) {
- 
-        case 0: 
-         let Firstrif = []
-        Firstrif = ottimo(nx)
-       
-        
+
+        case 0:
+          let Firstrif = []
+          Firstrif = ottimo(nx)
+
+
           Frames.forEach((f, idx) => { if (Firstrif[Frames[idx]] > Firstrif[Frames[vittima]]) { vittima = idx; } });
           Frames[vittima] = s
-          caricato[vittima]=nx
-          ;
+
+            ;
 
         case 1:
           let Firstrife = []
           Firstrife = LRU(nx)
           Frames.forEach((f, idx) => { if (Firstrife[Frames[idx]] > Firstrife[Frames[vittima]]) { vittima = idx; } });
           Frames[vittima] = s
-          caricato[vittima]=nx
-          ; break;
-        case 2: 
-        vittima = FIFO(nx);
-        
-        caricato[vittima]=nx
-      
 
-        Frames[vittima] = s
-          break;
-          case 3:
-          
-          vittima =Math.floor((Math.random()*MaxFrames))
-        
-          caricato[vittima]=nx
-        
-  
+            ; break;
+        case 2:
+          vittima = FIFO(nx);
+
+          caricato[vittima] = nx
+
+
           Frames[vittima] = s
-            break;
+          break;
+        case 3:
+
+          vittima = Math.floor((Math.random() * MaxFrames))
+
+          caricato[vittima] = nx
+
+
+          Frames[vittima] = s
+          break;
 
       }
 
- 
+
       console.log(JSON.stringify(Frames))
-    
+
     }
   }
 
@@ -82,7 +83,7 @@ Strrif.forEach(function (s, nx) {
 
 console.log(pageFault, "PageFaults totali")
 console.log(JSON.stringify(Frames), "stato finale")
-//ottimo(0)
+
 function ottimo(posto) {
 
   let Firstrif = [];
@@ -115,9 +116,9 @@ function LRU(posto) {
 
 function FIFO(posto) {
 
- 
+
   let Firstload = 0
-  Pages.forEach((p) => { if (caricato[p] < caricato[Firstload]) Firstload = p})
+  Pages.forEach((p) => { if (caricato[p] < caricato[Firstload]) Firstload = p })
 
 
   return (Firstload)
