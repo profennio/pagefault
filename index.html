@@ -6,6 +6,15 @@
     <title>Pagefault</title>
     <style>
 
+
+.strrif {
+
+
+display:flex;
+flex-direction: row;
+
+
+}
 .rettangolo {
 
 
@@ -17,7 +26,7 @@ flex-direction: column;
 .viola {
     color:black;
 border:3px;
-background-color: green;
+background-color: cyan;
 }
 .rett {
     color:black;
@@ -26,6 +35,22 @@ border-color: black;
 border-width: 1px;
 width: 50px;
 height: 50px;
+text-align: center;
+font-size: larger;
+font-weight: bold;
+  border: 1px solid black;
+ 
+  padding: 10px 0;
+ 
+}
+.elstr {
+    color:black;
+    background-color:lightgreen;
+    border-style: solid;
+border-color: black;
+border-width: 1px;
+width: 50px;
+height: 20px;
 text-align: center;
 font-size: larger;
 font-weight: bold;
@@ -44,26 +69,28 @@ font-weight: bold;
 
     </style>
 </head>
-<body>
+<body> 
+   
     <label for="algo">Scegli algoritmo:</label>
 
     <select name="algo" id="selectalgo">
-      <option value="0">ottimo</option>
+        <option value="0">ottimo</option>
       <option value="1">LRU</option>
+    
       <option value="2">FIFO</option>
       <option value="3">casuale</option>
     </select>
-    
+     <div id="stringarif"></div>
 <!-- <input type="text" id="tipoalg" />
 <input type="button" id="cmdscegli" value="Scegli algoritmo"/> -->
+   
+    <div id="statoRAM"/>
 
-    <div id="statoRAM">
+  
 
 
 
 
-
-    </div>
     <script src="./app.js"></script>
 </body>
 </html>
