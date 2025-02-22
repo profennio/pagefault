@@ -2,6 +2,7 @@ let Frames = []
 let Pages = []
 var Strrif = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1]
 //var Strrif = [1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5]
+
 var MaxFrames = 3
 var NumPages = 8
 
@@ -15,12 +16,15 @@ let pagefaults = []
 function ricalcola(algo) {
 
   Pages = []
-  Strrif = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1]
-  //var Strrif = [1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5]
+
   MaxFrames = 3
   NumPages = 8
-  Frames = []
-  caricato = new Array(MaxFrames)
+
+  Frames = new Array(MaxFrames).fill(0);
+
+
+
+  caricato = new Array(MaxFrames).fill(-1);
 
   for (let i = 0; i < NumPages; i++)
     Pages.push(i)
@@ -46,6 +50,7 @@ function ricalcola(algo) {
   statoRAM = []
   pagefaults = []
 
+
   // for (let i = 0; i < NumPages; i++)
   // Pages.push(i)
 
@@ -57,11 +62,11 @@ function ricalcola(algo) {
 
       pagefaults.push(1)
 
-      //alert(JSON.stringify(Frames))
+
       if (Frames.length < MaxFrames) {
         Frames.push(s)
         caricato[Frames.length - 1] = nx
-        // statoRAM.push(JSON.stringify(Frames))
+
         statoRAM.push(Frames.slice(0))
       }
       else {
@@ -72,8 +77,7 @@ function ricalcola(algo) {
         switch (algoritmo * 1) {
 
           case 0:
-            // alert(8888)
-            console.log(77777)
+
             let Firstrif = []
             Firstrif = ottimo(nx)
 
@@ -84,13 +88,13 @@ function ricalcola(algo) {
               ;
 
           case 1:
-            console.log(6666)
+
 
             let Firstrife = []
             Firstrife = LRU(nx)
             Frames.forEach((f, idx) => { if (Firstrife[Frames[idx]] > Firstrife[Frames[vittima]]) { vittima = idx; } });
             Frames[vittima] = s
-              //  alert(JSON.stringify(Frames))
+
 
               ; break;
           case 2:
@@ -105,21 +109,14 @@ function ricalcola(algo) {
 
             vittima = Math.floor((Math.random() * MaxFrames))
 
-            //   caricato[vittima] = nx
-
-
             Frames[vittima] = s
             break;
 
         }
 
-        // statoRAM.push(JSON.stringify([...Frames]))
+       
         statoRAM.push([...Frames])
-        console.log(JSON.stringify(Frames))
-        console.log("__RAM__")
-
-        console.log(JSON.stringify(statoRAM))
-        console.log("___")
+       
 
 
       }
@@ -131,8 +128,7 @@ function ricalcola(algo) {
     }
   })
 
-  /* console.log(pageFault, "PageFaults totali")
-  console.log(JSON.stringify(Frames), "stato finale") */
+ 
   mostraRAM()
   mostraRif()
 
@@ -155,7 +151,7 @@ function LRU(posto) {
 
   let Firstrif = [];
   let _Strrif = [...Strrif].slice(0, posto)
-  //_Strrif = [..._Strrif].reverse()
+
   _Strrif.reverse()
 
   Pages.forEach((p) => Firstrif.push(1000));
@@ -185,11 +181,11 @@ function mostraRAM() {
 
   let nodo = document.getElementById("statoRAM")
 
-  //statoRAM.forEach(s){
+ 
   statoRAM.forEach((s, idx) => {
     const newDiv = document.createElement("div");
 
-    //newDiv.innerHTML=JSON.stringify(s)
+   
     s.forEach((t) => {
       const rett = document.createElement("div");
       rett.classList.add("rett")
@@ -210,9 +206,23 @@ function mostraRAM() {
   );
 
   nodo.appendChild(pagef)
-  //const statof = document.createElement("div");
-  //statof.innerHTML = "    stato finale: " + JSON.stringify(pagefaults)
-  //nodo.appendChild(statof)
+ 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
 }
 
 
@@ -221,21 +231,17 @@ function mostraRif() {
 
   let nodo = document.getElementById("stringarif")
 
-  //statoRAM.forEach(s){
+ 
   Strrif.forEach((s, idx) => {
-
-
 
     const rett = document.createElement("div");
     rett.classList.add("elstr")
-    // if (pagefaults[idx] == 1) rett.classList.add("viola")
+    
     rett.innerHTML = s
-    // newDiv.appendChild(rett)
-    // }) 
-   // rett.classList.add("rettangolo")
+    
     nodo.appendChild(rett)
   })
-nodo.classList.add("strrif")
+  nodo.classList.add("strrif")
 
 }
 
