@@ -216,14 +216,14 @@ function mostraRif() {
 
 
   let nodo = document.getElementById("stringarif")
-
+nodo.innerHTML=""
 
   Strrif.forEach((s, idx) => {
 
     const rett = document.createElement("div");
     rett.classList.add("elstr")
 
-    let strhtml = ' <select name="algo" id="selectalgo">'
+    let strhtml = ' <select name="selstrif" id="selstrif">'
      // strhtml += '<option value="2"</option>'
     // strhtml+= '<option value="0"></option>'
    // strhtml += '<option value=' + s + '" selected >' + s + '</option>'
@@ -242,6 +242,12 @@ function mostraRif() {
   })
   nodo.classList.add("strrif")
 
+const collection = document.querySelectorAll("#selstrif");
+collection.forEach((c,idx)=>{c.addEventListener("change", (event) => {
+  Strrif[idx]=1*event.target.value
+  mostraRif()
+ })})
+
 }
 
 document.getElementById("selectalgo").addEventListener("change", (event) => {
@@ -249,3 +255,6 @@ document.getElementById("selectalgo").addEventListener("change", (event) => {
 
   ricalcola(algoritmo)
 })
+//document.getElementById("selstrif").addEventListener("change", (event) => {
+ //alert(9)
+//})
