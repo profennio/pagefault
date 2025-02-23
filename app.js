@@ -20,8 +20,8 @@ function ricalcola(algo) {
   MaxFrames = 3
   NumPages = 8
 
-Frames = new Array(MaxFrames).fill(-1);
-Frames = []
+
+  Frames = []
 
 
   caricato = new Array(MaxFrames).fill(-1);
@@ -114,9 +114,9 @@ Frames = []
 
         }
 
-       
+
         statoRAM.push([...Frames])
-       
+
 
 
       }
@@ -128,7 +128,7 @@ Frames = []
     }
   })
 
- 
+
   mostraRAM()
   mostraRif()
 
@@ -181,11 +181,11 @@ function mostraRAM() {
 
   let nodo = document.getElementById("statoRAM")
 
- 
+
   statoRAM.forEach((s, idx) => {
     const newDiv = document.createElement("div");
 
-   
+
     s.forEach((t) => {
       const rett = document.createElement("div");
       rett.classList.add("rett")
@@ -206,8 +206,8 @@ function mostraRAM() {
   );
 
   nodo.appendChild(pagef)
- 
-  
+
+
 
 }
 
@@ -222,19 +222,20 @@ function mostraRif() {
 
     const rett = document.createElement("div");
     rett.classList.add("elstr")
-    
-    rett.innerHTML = s
- // let selectnode=document.createElement("input")
-  var formElement = document.createElement("select");
-  var optionElement = document.createElement("option");
-  
- /*  optionElement.value = "foo";
-  optionElement.text = "foo"
-  optionElement.selected = true;
-   */
-  nodo.appendChild(formElement);
-  formElement.id = "bar";
-   rett.appendChild(formElement)
+
+    let strhtml = ' <select name="algo" id="selectalgo">'
+    // strhtml+= '<option value="0"></option>'
+   // strhtml += '<option value=' + s + '" selected >' + s + '</option>'
+    Pages.forEach((p) => { strhtml += '<option value='+ s+' selected=true>' + p + '</option>' })
+
+
+    strhtml += '</select>'
+    rett.innerHTML = strhtml
+
+
+    nodo.appendChild(rett)
+
+
   })
   nodo.classList.add("strrif")
 
