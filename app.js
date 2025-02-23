@@ -224,9 +224,12 @@ function mostraRif() {
     rett.classList.add("elstr")
 
     let strhtml = ' <select name="algo" id="selectalgo">'
+     // strhtml += '<option value="2"</option>'
     // strhtml+= '<option value="0"></option>'
    // strhtml += '<option value=' + s + '" selected >' + s + '</option>'
-    Pages.forEach((p) => { strhtml += '<option value='+ s+' selected=true>' + p + '</option>' })
+    Pages.forEach((p) => { let sels=' selected=true' ;if(p!=s)sels='';
+      
+    strhtml += '<option value='+'"'+p+'"'+sels+'>'+p+'</option>' })
 
 
     strhtml += '</select>'
