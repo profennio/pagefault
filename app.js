@@ -20,8 +20,8 @@ function ricalcola(algo) {
   MaxFrames = 3
   NumPages = 8
 
-  Frames = new Array(MaxFrames).fill(0);
-
+Frames = new Array(MaxFrames).fill(-1);
+Frames = []
 
 
   caricato = new Array(MaxFrames).fill(-1);
@@ -209,20 +209,6 @@ function mostraRAM() {
  
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
 }
 
 
@@ -231,15 +217,24 @@ function mostraRif() {
 
   let nodo = document.getElementById("stringarif")
 
- 
+
   Strrif.forEach((s, idx) => {
 
     const rett = document.createElement("div");
     rett.classList.add("elstr")
     
     rett.innerHTML = s
-    
-    nodo.appendChild(rett)
+ // let selectnode=document.createElement("input")
+  var formElement = document.createElement("select");
+  var optionElement = document.createElement("option");
+  
+ /*  optionElement.value = "foo";
+  optionElement.text = "foo"
+  optionElement.selected = true;
+   */
+  nodo.appendChild(formElement);
+  formElement.id = "bar";
+   rett.appendChild(formElement)
   })
   nodo.classList.add("strrif")
 
