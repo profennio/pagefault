@@ -1,99 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagefault</title>
     <style>
+        .strrif {
 
 
-.strrif {
+            display: flex;
+            flex-direction: row;
 
 
-display:flex;
-flex-direction: row;
+        }
+
+        .rettangolo {
 
 
-}
-.rettangolo {
+            display: flex;
+            flex-direction: column;
 
 
-display:flex;
-flex-direction: column;
+        }
+
+        .viola {
+            color: black;
+            border: 3px;
+            background-color:
+                cyan;
+        }
+
+        .rett {
+            color: black;
+            border-style: solid;
+            border-color: black;
+            border-width: 1px;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: larger;
+            font-weight: bold;
+            border: 1px solid black;
+
+            padding: 10px 0;
+
+        }
+
+        .elstr {
+            color: black;
+            background-color: lightgreen;
+            border-style: solid;
+            border-color: black;
+            border-width: 1px;
+            width: 50px;
+            height: 20px;
+            text-align: center;
+            font-size: larger;
+            font-weight: bold;
+            border: 1px solid black;
+
+            padding: 10px 0;
+
+        }
+
+        #statoRAM {
 
 
-}
-.viola {
-    color:black;
-border:3px;
-background-color: 
-cyan;
-}
-.rett {
-    color:black;
-    border-style: solid;
-border-color: black;
-border-width: 1px;
-width: 50px;
-height: 50px;
-text-align: center;
-font-size: larger;
-font-weight: bold;
-  border: 1px solid black;
- 
-  padding: 10px 0;
- 
-}
-.elstr {
-    color:black;
-    background-color:lightgreen;
-    border-style: solid;
-border-color: black;
-border-width: 1px;
-width: 50px;
-height: 20px;
-text-align: center;
-font-size: larger;
-font-weight: bold;
-  border: 1px solid black;
- 
-  padding: 10px 0;
- 
-}
-#statoRAM {
+            display: flex;
+            flex-direction: row;
 
+        }
 
-    display:flex;
-    flex-direction: row;
-   
-}
-
-select {font-size: larger;}
-
+        select {
+            font-size: larger;
+        }
     </style>
 </head>
-<body> 
-   
+
+<body>
+
     <label for="algo">Scegli algoritmo:</label>
 
     <select name="algo" id="selectalgo">
+        <option value="-1">----</option>
         <option value="0">ottimo</option>
-      <option value="1">LRU</option>
-    
-      <option value="2">FIFO</option>
-      <option value="3">casuale</option>
-    </select>
-     <div id="stringarif"></div>
-<!-- <input type="text" id="tipoalg" />
-<input type="button" id="cmdscegli" value="Scegli algoritmo"/> -->
-   
-    <div id="statoRAM"/>
+        <option value="1">LRU</option>
 
-  
+        <option value="2">FIFO</option>
+        <option value="3">casuale</option>
+    </select>
+    <label for="numframes">Numero Frames:</label>
+    <select name="numframes" id="numframes">
+        <option value="2">2</option>
+        <option value="3" selected="true">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+
+
+    </select>
+    <label for="numpagine">Numero Pagine:</label>
+    <select name="numpagine" id="numpagine">
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8" selected=true>8</option>
+
+
+    </select>
+
+          
+    <div id="stringarif"></div>
+    <!-- <input type="text" id="tipoalg" />
+<input type="button" id="cmdscegli" value="Scegli algoritmo"/> -->
+
+    <div id="statoRAM" />
+
+
 
 
 
 
     <script src="./app.js"></script>
 </body>
+
 </html>

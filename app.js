@@ -3,7 +3,7 @@ let Pages = []
 var Strrif = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1]
 //var Strrif = [1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5]
 
-var MaxFrames = 4
+var MaxFrames = 3
 var NumPages = 8
 
 let caricato = new Array(MaxFrames)
@@ -18,7 +18,7 @@ function ricalcola(algo) {
   Pages = []
 
   
-  NumPages = 8
+  //NumPages = 8
 
 
   Frames = []
@@ -255,6 +255,16 @@ document.getElementById("selectalgo").addEventListener("change", (event) => {
   algoritmo = event.target.value
 
   ricalcola(algoritmo)
+})
+document.getElementById("numframes").addEventListener("change", (event) => {
+  MaxFrames = event.target.value*1
+
+  
+})
+document.getElementById("numpagine").addEventListener("change", (event) => {
+  NumPages = event.target.value*1
+
+  
 })
 //document.getElementById("selstrif").addEventListener("change", (event) => {
  //alert(9)
