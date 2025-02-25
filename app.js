@@ -1,14 +1,18 @@
 let Frames = []
 let Pages = []
-var Strrif = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1]
-//var Strrif = [1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5]
+//var Strrif = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1]
+var Strrif = [1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5,0,2,1,2,3,4,0,5,4,3,6,7,1,2,0,3]
 
 var MaxFrames = 3
-var NumPages = 8
+var NumPages = 6
+
+NumPages= new Set(Strrif).size;
+
+
 
 let caricato = new Array(MaxFrames)
 let algoritmo = 1 //0: Ott
-// ottimo    1: LRU   2: FIFO  3: casuale
+// ottimo    1: LRU   2: FIFO  3: casu
 let statoRAM = []
 let pagefaults = []
 
